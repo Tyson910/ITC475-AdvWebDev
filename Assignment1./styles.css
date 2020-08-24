@@ -1,0 +1,27 @@
+@charset "utf-8" ;
+
+html {
+	font-size: 14px;
+}
+
+body {
+    background-color: ivory;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    background-color:#add8e6;
+}
+
+footer {
+    color: ivory;
+    background-color: black;
+}
+
+footer div {
+    text-transform: uppercase;
+}
+address a {
+    color:ivory;
+    text-decoration: none;
+}
