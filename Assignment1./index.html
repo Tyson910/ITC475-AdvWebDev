@@ -6,26 +6,28 @@
         <meta name= "viewport" content ="width=device-width, initial-scale=1">
         <title>Mega Travel</title>
         <link href="styles.css" rel="stylesheet"/>
+        <link href="grids.css" rel="stylesheet" />
     </head>
 
     <body>
         <header>
-            <img src="mega travel logo.png" alt="mega travel logo"/>
+           <img id="logo-pic" src="mega travel logo.png" alt="mega travel logo"/> 
         </header>
+        <div id="line-seperator"> </div>
 
         <nav>
-            <ul>
-                <li><a href="MegaTravel.html">Home</a></li>
-                <li><a href="AboutUs.html">About Us</a></li>
-                <li><a href="Contact.html">Contact Agent</a></li>
+            <ul class="nav-bar">
+                <li class="nav-link" id="home-link"><a href="MegaTravel.html">Home</a></li>
+                <li class="nav-link" id="about-link"><a href="AboutUs.html">About Us</a></li>
+                <li class="nav-link" id="contact-link"><a href="Contact.html">Contact Agent</a></li>
             </ul>
         </nav>
 
         <section>
 
-        <h4>Travel Packages</h4>
+        <h1>Travel Packages</h1>
 
-            <p class="biz-details">
+            <div class="biz-info">
                 We are specialized with International Travels and Tours.
                     Our expertized and experience can save you 100's of dollars
                     in your pocket. Beside the money you can also save your valuable
@@ -35,15 +37,16 @@
                     service and support for all its past, present, and future customers.
                     We are here today only for you. We remind ourself everyday and every
                     moment with a sincere gratitude.
-            </p>
+            </div>
         </section>
 
+            <div class="vacay-containers">
             <div class="box1">
                 <ul class="Maldives">
                     <img src="maldives.png" alt="beach in the Maldives" class="vacay-pics"/>
-                    <li class="location">Maldives Resort</li>
+                    <li class="location"><a href=”#”>Maldives Resort</a></li>
                     <li class="vacay-price">$1800.99</li>
-                    <li class="price-deal">Price you pay $999.99</li>
+                    <li class="price-deal" id="Maldives-deal">Price you pay </li>
                     <li class="Savings">Your saving $801</li>
                 </ul>
             </div>
@@ -51,9 +54,9 @@
             <div class="box2">
                 <ul class="Mexico">
                     <img src="mexico.png" alt="bungalo on the ocean" class="vacay-pics"/>
-                    <li class="location">Mexico Resort (All Inclusive)</li>
+                    <li class="location"><a href=”#”>Mexico Resort (All Inclusive)</a></li>
                     <li class="vacay-price">$2999.99</li>
-                    <li class="price-deal">Price you pay $2199.99</li>
+                    <li class="price-deal" id="MX-deal">Price you pay </li>
                     <li class="Savings">Your saving $800</li>
                 </ul>
             </div>
@@ -61,9 +64,9 @@
             <div class="box3">
                 <ul class ="NewZealand">
                     <img src="newzealand.PNG" alt="mountain overlooking highway in New Zealand" class="vacay-pics"/>
-                    <li class="location">New Zealand Trek</li>
+                    <li class="location"><a href=”#”>New Zealand Trek</a></li>
                     <li class="vacay-price">$2499.00</li>
-                    <li class="price-deal">Price you pay $2100.00</li>
+                    <li class="price-deal" id="NZ-deal">Price you pay </li>
                     <li class="Savings">Your saving $399</li>
                 </ul>
             </div>
@@ -71,13 +74,13 @@
             <div class="box4">
                 <ul class="Venice">
                     <img src="venice.png" alt="sunset view of Venice" class="vacay-pics"/>
-                    <li class="location">Venice Italy</li>
+                    <li class="location"><a href=”#”>Venice Italy</a></li>
                     <li class="vacay-price">$4100.00</li>
-                    <li class="price-deal">Price you pay $3699.00</li>
+                    <li class="price-deal" id="Venice-deal">Price you pay </li>
                     <li class="Savings">Your saving $400</li>
                 </ul>
             </div>
-            
+
         <footer>
             <p>Copyright Protected. All rights reserved</p>
             <br>
@@ -86,5 +89,6 @@
                 <a href="mailto:mega@travels.com"> Mega@travels.com</a>
             </address>
         </footer>
+        </div>
     </body>
 </html>

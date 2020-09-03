@@ -5,23 +5,135 @@ html {
 }
 
 body {
-    background-color: ivory;
+    background-color:#fff;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0 0 0 0;
+}
+
+img {
+    max-height: 100%;
 }
 
 header {
     background-color:#add8e6;
+    height:40%;
+    margin-left:0;
+    background-size:400px 200px;
+    background-repeat:no-repeat;
+    display:grid;
+    grid-template-rows: repeat(2, 50%);
+    grid-template-columns: repeat(5, 1fr);
+
 }
 
+img#logo-pic{
+    object-fit: fill;
+    grid-row: 1 / span 2;
+    grid-column: 1 ;
+}
+
+#line-seperator{
+    background-color:#d3d3d3;
+    height:5%;
+    margin-left:0;
+    margin-right:0px;
+}
+
+
+.nav-bar{
+    margin:0 0 0 0;
+    height:5%;
+    display:grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+
+}
+
+#home-link{
+    grid-column:4;
+    justify-self:right;
+}
+
+#about-link{
+    grid-column:5;
+    justify-self:center;
+}
+
+#contact-link{
+    grid-column:6;
+    justify-self:left;
+}
+section{
+    margin-left:10px;
+    display:grid;
+    grid-template-rows: .5fr 2fr;
+    grid-template-columns:.49fr .45fr;
+}
+
+.biz-info{
+    grid-row:2;
+    grid-column:1 ;
+}
+.vacay-containers{
+    margin-left:10px;
+    margin-right:10px;
+    font-size:12px;
+  /*  display:grid;
+    grid-template-rows: 1fr;
+    grid-template-columns:repeat(4, 25%)*/
+}
+
+a{
+    color:black;
+    text-decoration: none;
+}
 footer {
     color: ivory;
     background-color: black;
+}
+.vacay-price{
+    color:gray;
+}
+
+.savings{
+    color:forestgreen;
+}
+div ul{
+    border:1px solid black;
+}
+
+li{
+    list-style-type:none;
+}
+
+li.location a{
+    font-size:16px;
 }
 
 footer div {
     text-transform: uppercase;
 }
+
 address a {
     color:ivory;
     text-decoration: none;
+}
+
+.price-deal::after{
+    text-decoration: underline;
+}
+
+#maldives-deal::after{
+    content:"$999.99";
+}
+#mx-deal::after{
+    content:"$2199.99";
+}
+
+#NZ-deal::after{
+    content:"$2100.00";
+}
+
+#Venice-deal::after{
+    content:"$3699.00";
 }
