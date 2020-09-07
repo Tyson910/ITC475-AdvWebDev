@@ -55,7 +55,7 @@ h1{
     margin-left:10px;
     margin-bottom:15px;
 }
-.biz-info{
+.biz-info, .contact-info, .contact-info{
     margin-left:10px;
     margin-bottom:15px;
 }
@@ -182,6 +182,9 @@ address a {
     transition: all .75s ease-in;
 }
 
+
+
+
 @media only screen and (min-width: 600px) {
     /* For desktop and tablets: */
 header{
@@ -207,6 +210,7 @@ header{
 
 nav{
     background-color:inherit;
+    color:black;
 }
 
 
