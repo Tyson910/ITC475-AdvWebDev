@@ -16,6 +16,16 @@ header{
     grid-template-columns: repeat(10, 1fr);
     }
 
+#welcome{
+    grid-column:9;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+.welcome{
+    background-size: contain;
+    max-width: 100px;
+}
+
 /*displays logo at center of header*/
 .logo{
     background-image: url("mega travel logo.png"); 
@@ -203,6 +213,14 @@ header{
     min-width: 240px;
     min-height: 155px;
 }
+
+div#welcome{
+    max-height: fit-content;
+    max-width: fit-content;
+    grid-column:  5;
+}
+
+
 
 #line-seperator{
     margin-bottom:0;
