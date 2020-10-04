@@ -33,20 +33,18 @@
   
 
 //Welcome component     
-function Welcome(props){
+function Welcome(){
 
   const today = new Date();
-  //const clock = today.toLocaleTimeString();
-  
   let currentHour = today.getHours();
   let currentMin =  addZero( today.getMinutes() ) ;
   let currentTime = Number(currentHour.toString() + currentMin.toString());
 
-  //<div className='welcome' id='clock'> {props.date.toLocaleTimeString()} </div>
+  
     return (
-    <div id='welcome'>
+    <div>
       <img className='welcome' id='sunOrMoon' src = {sunOrMoon(currentTime)} /> 
-      <div className='welcome' id='greeting'> {showGreeting(currentTime)}</div>
+      <div className='welcome' id='showGreeting'> {showGreeting(currentTime)}</div>
     </div>
     ); 
 }

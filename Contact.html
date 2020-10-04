@@ -10,15 +10,15 @@
 
     <body>
         <header>
-            <div class="logo"></div>   
+            <div class="logo" id='greetings'></div>   
         </header>
         <div id="line-seperator"> </div>
 
         <nav>
             <div class="nav-bar">
-                <div class="nav-link" id="home-link"><a href="index.html">Home</a></div>
-                <div class="nav-link" id="about-link"><a href="AboutUs.html">About Us</a></div>
-                <div class="nav-link" id="contact-link"><a href="Contact.html">Contact Agent</a></div>
+                <a class="nav-link" id="home-link" href="index.html">Home</a>
+                <a class="nav-link" id="about-link" href="AboutUs.html">About Us</a>
+                <a class="nav-link" id="contact-link" href="Contact.html">Contact Agent</a>
             </div>
         </nav>
 
@@ -32,6 +32,8 @@
             a travel agent. 
         </div>
         </section>
+        <div id="reactForm"></div> 
+
     <footer>
         <div>Copyright Protected. All rights reserved</div>
         <br>
@@ -40,5 +42,10 @@
             <a href="mailto:mega@travels.com"> Mega@travels.com</a>
         </address>
     </footer>
+
+    <script crossorigin src='https://unpkg.com/react@16/umd/react.development.js'></script>
+    <script crossorigin src='https://unpkg.com/react-dom@16/umd/react-dom.development.js'></script>
+    <script src="/lib/index1.js" type="module"></script>
+
     </body>
 </html>
