@@ -1,60 +1,58 @@
-class ActivitySelector extends React.Component{
+class PickActivity extends React.Component {
     constructor(props){
         super(props);
-        this.state = {value: ''};
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-
-    handleClick(event){
-        this.setState({value: event.target.value})
-  
-
-    handleSubmit(event) {
-        console.log('a value was submitted : ' + this.state.value)
-        event.preventDefault();
+        this.state = {
+            activities: '',
+        };
     }
 
 
+    componentDidUpdate(prevProps){
+
+        const maldivesData = ['Beach', 'Sailing', 'Muesems', 'Hiking', 'Boating']
+        const cancunData = ['Beaches', 'Boating', 'Parks and Recreation', 'Snorkeling'];
+        const veniceData = ['Museums', 'Theatre', 'Parks and Recreation', 'City Tours'];
+        const NZData = ['City Tours', 'Sports', 'Cycling', 'Museums', 'Boating'];
+
+
+        if (this.props.city !== prevProps.city){
+            this.setState({city: this.props.city});
+
+            if (this.props.city == 'Maldives'){
+                this.setState({activities:maldivesData});
+            }
+            else if (this.props.city == 'Cancun'){
+                this.setState({activities:cancunData});
+            }
+            else if (this.props.city == 'New Zealand'){
+                this.setState({activities:NZData});
+            }
+            else if (this.props.city == 'Venice'){
+                this.setState({activities:veniceData});
+            }
+            
+    }
     
+    }
+
+
     render(){
-        return(
-            <div >
-                <form onSubmit = {this.handleSubmit} value={this.state.value} onClick={this.handleClick}>
+        const outingsArray = Object.values(this.state.activities) ; 
 
-                <label htmlFor='Maldives'>Maldives</label>
-                <input type='radio' name='cites' id='Maldives' value='Maldives' />
+        return (
+            <div>
+            
+            {outingsArray.map(item =>(
+                <form>
+                <input type="checkbox" key={item} id={item} name={item} value={item}></input>
+                <label htmlFor={item}>{item}</label>
                 <br></br>
-
-                <label htmlFor='Mexico'>Mexico</label>
-                <input type='radio' name='cites' value='Mexico' />
-                <br></br>
-
-                <label htmlFor='Venice'>Venice</label>
-                <input type='radio' name='cites'  value='Venice' />
-                <br></br>
-
-                <label htmlFor='New Zealand'>New Zealand</label>
-                <input type='radio' name='cites' value='New Zealand' />
-                
-                <input type="submit" value="submit" />
                 </form>
+                ))}
+
             </div>
         );
-    
+
+    }
 }
-
-} 
-
-
-export default ActivitySelector;
-
-              /*  <select value={this.state.value} onChange={this.handleChange} >
-                    <option value="Mexico">Mexico</option>
-                    <option value='Maldives'>Maldives</option>
-                    <option value="NewZealand">New Zealand</option>
-                    <option value="Venice">Venice</option>
-                </select> */
-
+export default PickActivity;
