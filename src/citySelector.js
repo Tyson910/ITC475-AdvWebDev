@@ -25,8 +25,9 @@ class CitySelector extends React.Component{
     render(){
         return(
             <div >
+
                 <form onSubmit = {this.handleSubmit} value={this.state.value} onChange={this.handleChange} className='locations'>
-                
+                <h3>Locations</h3>
                 <input type='radio' name='cites' value='Maldives' />
                 <label htmlFor='Maldives'>Maldives</label>
                 <br></br>

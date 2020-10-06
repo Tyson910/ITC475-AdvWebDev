@@ -42,6 +42,7 @@ class PickActivity extends React.Component {
 
         return (
             <form className='outingList'>
+            <h3>Activities</h3>
             
             {outingsArray.map(item =>(
                 <div>
