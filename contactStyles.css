@@ -11,11 +11,12 @@
     width: 45%;
     text-align: center;
 }
-
+/*create space between buttons and labels */
 input{
     margin-left: 2%;
     margin-right: 2%;
 }
+/* give border to both lists */ 
 .locations{
     padding: 10px;
     border: 10px double black;
