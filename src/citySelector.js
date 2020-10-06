@@ -25,22 +25,22 @@ class CitySelector extends React.Component{
     render(){
         return(
             <div >
-                <form onSubmit = {this.handleSubmit} value={this.state.value} onChange={this.handleChange}>
-
-                <label htmlFor='Maldives'>Maldives</label>
+                <form onSubmit = {this.handleSubmit} value={this.state.value} onChange={this.handleChange} className='locations'>
+                
                 <input type='radio' name='cites' value='Maldives' />
+                <label htmlFor='Maldives'>Maldives</label>
                 <br></br>
 
-                <label htmlFor='Mexico'>Mexico</label>
                 <input type='radio' name='cites' value='Cancun' />
+                <label htmlFor='Mexico'>Mexico</label>
                 <br></br>
-
-                <label htmlFor='Venice'>Venice</label>
+           
                 <input type='radio' name='cites'  value='Venice' />
+                <label htmlFor='Venice'>Venice</label>
                 <br></br>
-
-                <label htmlFor='New Zealand'>New Zealand</label>
+              
                 <input type='radio' name='cites' value='New Zealand' />
+                <label htmlFor='New Zealand'>New Zealand</label>
                 <br></br>
     
                 </form>

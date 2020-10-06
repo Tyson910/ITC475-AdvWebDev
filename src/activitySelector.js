@@ -41,20 +41,20 @@ class PickActivity extends React.Component {
         const outingsArray = Object.values(this.state.activities) ; 
 
         return (
-            <div>
+            <form className='outingList'>
             
             {outingsArray.map(item =>(
-                <form>
+                <div>
                 <input type="checkbox" key={item} id={item} name={item} value={item}></input>
                 <label htmlFor={item}>{item}</label>
                 <br></br>
-                </form>
+                </div>
                 ))}
                 
  
                 
 
-            </div>
+            </form>
         );
 
     }
