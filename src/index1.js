@@ -12,13 +12,10 @@
 
   
       return(
-        <div>
+        <div id='welcome'>
 
-          <div id='welcome'>
-            
-            <Welcome />
             <Clock />
-          </div>
+            <Welcome />
 
         </div>
       );
