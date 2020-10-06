@@ -35,7 +35,8 @@ class PickActivity extends React.Component {
     
     }
 
-
+    //<input type="submit" value="submit" />
+    
     render(){
         const outingsArray = Object.values(this.state.activities) ; 
 
@@ -49,6 +50,9 @@ class PickActivity extends React.Component {
                 <br></br>
                 </form>
                 ))}
+                
+ 
+                
 
             </div>
         );

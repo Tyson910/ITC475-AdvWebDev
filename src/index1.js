@@ -20,11 +20,9 @@
             <Clock />
           </div>
 
-          <div> 
-            <CitySelector />
-          </div>
         </div>
       );
   }
 
-ReactDOM.render(<App />, document.getElementById('greetings'))
+ReactDOM.render(<App />, document.getElementById('greetings'));
+ReactDOM.render(<CitySelector />, document.getElementById('rsvpForm'));

@@ -42,11 +42,10 @@ class CitySelector extends React.Component{
                 <label htmlFor='New Zealand'>New Zealand</label>
                 <input type='radio' name='cites' value='New Zealand' />
                 <br></br>
-                
-                <input type="submit" value="submit" />
+    
                 </form>
 
-                <div><PickActivity city = {this.state.value}/></div>
+                <PickActivity city = {this.state.value} />
             </div>
         );
     
