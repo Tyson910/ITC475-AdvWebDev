@@ -17,10 +17,6 @@ class PickActivity extends React.Component {
 
             this.setState({outings: activityList(this.props.city)});
             
-            const listy = activityList(this.props.city);
-            const listyArray = Object.values(listy);
-            console.log( listyArray.map( item => (item.activity)));
-            
     }
     
     }
