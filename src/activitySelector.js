@@ -11,15 +11,13 @@ class PickActivity extends React.Component {
 
     componentDidUpdate(prevProps){
         
+        //checks if radio button changed then updates activities
+
         if (this.props.city !== prevProps.city){
 
             this.setState({city: this.props.city});
 
             this.setState({outings: activityList(this.props.city)});
-            
-            const listy = activityList(this.props.city);
-            const listyArray = Object.values(listy);
-            console.log( listyArray.map( item => (item.activity)));
             
     }
     
@@ -28,6 +26,7 @@ class PickActivity extends React.Component {
     //<input type="submit" value="submit" />
 
     render(){
+        //create iterable array then iterates through to create checkbox buttons 
         const outingsArray = Object.values(this.state.outings) ; 
         const showArray = outingsArray.map(item =>(
             <div key={item.id} >
