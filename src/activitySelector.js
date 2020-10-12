@@ -4,6 +4,7 @@ class PickActivity extends React.Component {
         super(props);
         this.state = {
             outings: '',
+            city:'',
             chosenOutings: ''
         };
     }
@@ -28,7 +29,7 @@ class PickActivity extends React.Component {
     render(){
         //create iterable array then iterates through to create checkbox buttons 
         const outingsArray = Object.values(this.state.outings) ; 
-        const showArray = outingsArray.map(item =>(
+        const arrayForm = outingsArray.map(item =>(
             <div key={item.id} >
             <input type="checkbox" name='Outing' value={item.activity}></input>
             <label htmlFor={item.activity}>{item.activity}</label>
@@ -36,15 +37,27 @@ class PickActivity extends React.Component {
             </div>
             ));
 
-        return (
+        if (this.props.city.length == 0){
+            const display = <div></div>
+            return display;
+        }
         
-            <form className='outingList'>
+        if (this.props.city.length > 0){
+       const display = <form className='outingList'>
+       <h3>Activities</h3>
+       {arrayForm}
+       </form>
+       return display;
+        }
 
-            <h3>Activty</h3>
-
-            <div>{showArray}</div>    
-
-            </form>
+        return (
+            
+            <div>
+            {display}
+            
+            
+            </div>
+    
         );
 
     }

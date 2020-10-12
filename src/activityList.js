@@ -5,7 +5,7 @@ function activityList (city){
     const maldivesList = [
     {activity: 'Beach', id:'mdv0'},
     {activity: 'Sailing', id:'mdv1'},
-    {activity: 'Muesems', id:'mdv2'},
+    {activity: 'Musuems', id:'mdv2'},
     {activity: 'Hiking', id:'mdv3'},
     {activity: 'Boating', id:'mdv4'}
     ]
