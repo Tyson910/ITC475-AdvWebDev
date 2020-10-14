@@ -4,7 +4,6 @@ class PickActivity extends React.Component {
         super(props);
         this.state = {
             outings: '',
-            city:'',
             chosenOutings: ''
         };
     }
@@ -14,9 +13,7 @@ class PickActivity extends React.Component {
         
         //checks if radio button changed then updates activities
 
-        if (this.props.city !== prevProps.city){
-
-            this.setState({city: this.props.city});
+        if (this.props.city !== prevProps.city){4
 
             this.setState({outings: activityList(this.props.city)});
             
