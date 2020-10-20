@@ -3,8 +3,8 @@
 
   import Welcome from '/lib/Welcome.js'
   import Clock from '/lib/clock.js'
-  import CitySelector from '/lib/citySelector.js';
-  import PickActivity from '/lib/activitySelector.js';
+  import RSVPform from '/lib/RSVPform.js';
+  //import PickOutings from '/lib/activitySelector.js';
   
 
   function App (){
@@ -22,4 +22,4 @@
   }
 
 ReactDOM.render(<App />, document.getElementById('greetings'));
-ReactDOM.render(<CitySelector />, document.getElementById('rsvpForm'));
+ReactDOM.render(<RSVPform />, document.getElementById('rsvpForm'));

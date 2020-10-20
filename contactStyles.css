@@ -8,21 +8,32 @@
 
 #rsvpForm{
     margin-left: 2%;
-    width: 45%;
+    width: 90%;
     text-align: center;
 }
+
 /*create space between buttons and labels */
 input{
     margin-left: 2%;
     margin-right: 2%;
 }
+select{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
 /* give border to both lists */ 
 .locations{
     padding: 10px;
     border: 4px solid black;
+
 }
 
-.outingList{
-    padding:10px;
-    border: solid 1px black;
+
+@media only screen and (min-width: 700px) {
+    #rsvpForm{
+        margin-left: 2%;
+        width: 45%;
+        text-align: center;
+    }
 }
