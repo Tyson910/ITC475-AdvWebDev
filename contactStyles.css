@@ -30,6 +30,7 @@ select{
 }
 
 .formnav-buttons{
+    
     box-sizing: border-box;
     border-radius: .25em;
     text-decoration: none;

@@ -55,7 +55,7 @@ export default class RSVPform extends React.Component{
         const outingsOptions = activityList(event.target.value);
         const outingsArray = Object.values(outingsOptions) ;
         this.setState({outings: outingsArray});
-        };
+        }
 
         if(event.target.type ==='checkbox'){
             const outingsArray = this.state.outings; 
@@ -74,7 +74,7 @@ export default class RSVPform extends React.Component{
             if(event.target.checked){
                 let elementsIndex = this.state.outings.map(x =>{
                     if(x.id === arrayForm.id){
-                        x.isPicked = true
+                        x.isPicked = true;
                     }
                     return x });
                 this.setState({outings: elementsIndex});
@@ -82,16 +82,18 @@ export default class RSVPform extends React.Component{
 
             }
 
-            ////sets IsPicked to false in unchosen objects
+            //sets IsPicked to false in unchosen objects
             else{
                 let elementsIndex = this.state.outings.map(x =>{
                     if(x.id === arrayForm.id){
-                        x.isPicked = false
+                        x.isPicked = false;
                     }
                     return x })
-                this.setState({outings: elementsIndex})
-                if(numOfOutings>0){
-                this.setState({advance:true})}
+                this.setState({outings: elementsIndex});
+
+                if(!numOfOutings){
+                this.setState({advance:false});
+            }
             }
         }
     }
@@ -121,16 +123,11 @@ export default class RSVPform extends React.Component{
         let arrayForm;
         let contactForm;
         let tripForm;
+        let currentDisplay;
 
         const proceed = this.state.proceed;
         let pageNum = this.state.page;
-        /*
-        switch(pageNum){
-            case 1:
-                break
-            case 2:
-        }
-        */
+
         if(this.state.city){
             const outingsArray = this.state.outings; 
             
@@ -156,6 +153,37 @@ export default class RSVPform extends React.Component{
             onTripChange={this.handleChange}
             checkin={this.state.checkin}
             checkout={this.state.checkout}/>;
+
+        switch(pageNum){
+            case 1:
+                currentDisplay= <React.Fragment>
+                <h3>Please Choose a Destination</h3>
+                {cityButtonDisplay}
+
+                <input type='button' value='Fuck You Next' id='you'
+                onClick={this.handleNext} className='formnav-buttons'/>
+                </React.Fragment>
+                break;
+            case 2:
+                currentDisplay= <React.Fragment>
+                    <h3>Activities</h3>
+                    {arrayForm}
+
+                    <input type='button' value='Fuck Me Back' id='me'
+                    onClick={this.handlePrev} className='formnav-buttons'/>
+
+                    <input type='button' value='Fuck You Next' id='you'
+                    onClick={this.handleNext} className='formnav-buttons'/>
+
+                </React.Fragment>
+                break;
+            case 3:
+                currentDisplay= contactForm;
+                break;
+            case 4:
+                currentDisplay= tripForm;
+                break;
+        }
         
 
         return(
@@ -164,10 +192,16 @@ export default class RSVPform extends React.Component{
 
                 <form onSubmit = {this.handleSubmit} onReset= {this.handleReset}
                   onChange={this.handleChange} className='locations'>
-                <h3>Locations</h3>
-                
-                {cityButtonDisplay}
 
+                {currentDisplay}
+                
+                </form>
+            </div>
+        );  
+}
+} 
+
+/*
                 <input type='button' value='Fuck Me' id='me'
                 onClick={this.handlePrev} className='formnav-buttons'/>
 
@@ -179,11 +213,7 @@ export default class RSVPform extends React.Component{
                 {contactForm}
 
                 {tripForm}
-
+                                
                 <input type='reset' />
                 <input type='submit' />
-                </form>
-            </div>
-        );  
-}
-} 
+                */
