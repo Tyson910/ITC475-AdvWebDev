@@ -168,11 +168,11 @@ export default class RSVPform extends React.Component{
                 
                 {cityButtonDisplay}
 
-                <input type='button' value='Fuck Me' 
-                onClick={this.handlePrev} />
+                <input type='button' value='Fuck Me' id='me'
+                onClick={this.handlePrev} className='formnav-buttons'/>
 
-                <input type='button' value='Fuck You' 
-                onClick={this.handleNext} />
+                <input type='button' value='Fuck You' id='you'
+                onClick={this.handleNext} className='formnav-buttons'/>
 
                 {arrayForm}
 
