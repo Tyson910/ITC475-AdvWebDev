@@ -29,6 +29,35 @@ select{
 
 }
 
+.formnav-buttons{
+    box-sizing: border-box;
+    border-radius: .25em;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    transition: all .2s;
+}
+#you{
+    color:#FFFFFF;
+    background-color: #adbbe6;
+}
+#you:hover{
+    background-color: #7486cf;
+    border-color: #4eb5f1FF;
+    color: whitesmoke;
+}
+
+#me{
+    background-color: #FFFFFF;
+    border: .15em solid #4eb5f1;
+    color: #4eb5f1;
+}
+#me:hover{
+    color:whitesmoke;
+    background-color: #add8e5;
+}
+
+
 
 @media only screen and (min-width: 700px) {
     #rsvpForm{
