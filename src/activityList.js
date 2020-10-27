@@ -1,6 +1,8 @@
 
 function activityList (city){
 
+
+
     const maldivesList = [
         {activity: 'Beach', id:'mdv0', isPicked:false},
         {activity: 'Sailing', id:'mdv1', isPicked:false},

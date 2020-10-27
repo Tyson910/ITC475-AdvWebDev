@@ -38,22 +38,22 @@ select{
     font-weight: 300;
     transition: all .2s;
 }
-#you{
+#nextButton{
     color:#FFFFFF;
     background-color: #adbbe6;
 }
-#you:hover{
+#nextButton:hover{
     background-color: #7486cf;
     border-color: #4eb5f1FF;
     color: whitesmoke;
 }
 
-#me{
+#backButton{
     background-color: #FFFFFF;
     border: .15em solid #4eb5f1;
     color: #4eb5f1;
 }
-#me:hover{
+#backButton:hover{
     color:whitesmoke;
     background-color: #add8e5;
 }

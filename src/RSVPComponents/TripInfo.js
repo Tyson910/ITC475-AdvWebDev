@@ -16,6 +16,14 @@ let adultDropdown = adultArray.map( x =>(
     
     return(
 <div className='trip-info'>
+
+    <label htmlFor='adultCount'> How many adults are traveling?
+    <select name='adultCount' value={adultInput} onChange={onTripChange} >
+        {adultDropdown}
+    </select>
+    </label>
+    <br></br>
+    
     <label htmlFor='kidCount'> How many children are traveling?
     <select name='kidCount' value={kidsInput} onChange={onTripChange} >
         {kidsDropdown}
@@ -23,12 +31,6 @@ let adultDropdown = adultArray.map( x =>(
     </label>
     <br></br>
 
-    <label htmlFor='kidCount'> How many adults are traveling?
-    <select name='adultCount' value={adultInput} onChange={onTripChange} >
-        {adultDropdown}
-    </select>
-    </label>
-    <br></br>
 
     <label htmlFor='checkin'>Check In Date 
         <input type='date'
@@ -44,7 +46,8 @@ let adultDropdown = adultArray.map( x =>(
         name='checkout'
         value={checkout}
         onChange={onTripChange}
-        required />
+        required
+        min={checkin} />
 
     </label>
 
