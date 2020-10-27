@@ -29,33 +29,41 @@ select{
 
 }
 
-.formnav-buttons{
-    
+input{
     box-sizing: border-box;
-    border-radius: .25em;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     transition: all .2s;
+    border: .05em solid
 }
 #nextButton{
     color:#FFFFFF;
     background-color: #adbbe6;
+    border-color: #adbbe6;
 }
 #nextButton:hover{
     background-color: #7486cf;
-    border-color: #4eb5f1FF;
-    color: whitesmoke;
+    border-color: #7486cf;  
+    color:black;
 }
 
 #backButton{
     background-color: #FFFFFF;
-    border: .15em solid #4eb5f1;
     color: #4eb5f1;
 }
 #backButton:hover{
     color:whitesmoke;
-    background-color: #add8e5;
+    background-color: #4eb5f1;
+}
+
+#allButton,#noneButton{
+    color:#6c4ef1;
+}
+
+#allButton:hover,#noneButton:hover{
+    background-color:#6c4ef1;
+    color:whitesmoke;
 }
 
 

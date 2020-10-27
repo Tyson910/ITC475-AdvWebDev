@@ -37,7 +37,7 @@ let adultDropdown = adultArray.map( x =>(
         name='checkin'
         value={checkin}
         onChange={onTripChange}
-        required />
+        max={checkout} />
     </label>
     <br></br>
     
@@ -46,7 +46,6 @@ let adultDropdown = adultArray.map( x =>(
         name='checkout'
         value={checkout}
         onChange={onTripChange}
-        required
         min={checkin} />
 
     </label>
