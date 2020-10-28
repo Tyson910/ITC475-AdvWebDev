@@ -276,7 +276,8 @@ export default class RSVPform extends React.Component{
             <div >
 
                 <form onSubmit = {this.handleSubmit} onReset= {this.handleReset}
-                  onChange={this.handleChange} className='locations'>
+                  onChange={this.handleChange} className='locations' 
+                  action='confirm.php' method='POST'>
 
                 {page1}
 

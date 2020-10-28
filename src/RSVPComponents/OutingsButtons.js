@@ -5,7 +5,7 @@ const OutingsButtons = ({ activity, isPicked, onCheckboxChange}) => (
     <label>
       <input
         type="checkbox"
-        name={activity}
+        name='outing[]'
         checked={isPicked}
         value={activity}
         onChange={onCheckboxChange}
