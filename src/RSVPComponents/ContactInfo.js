@@ -33,6 +33,7 @@ function ContactInfo({fname,Lname,email,phone, onTextChange}){
         onChange={onTextChange} 
         required
         />
+        
         </label>
 
         <br></br>
@@ -54,3 +55,4 @@ function ContactInfo({fname,Lname,email,phone, onTextChange}){
 
 }
 export default ContactInfo;
+

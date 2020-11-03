@@ -262,8 +262,6 @@ export default class RSVPform extends React.Component{
             <h3>Please Enter Your Contact Information</h3>
                 {contactForm}
             <div>{this.state.errorMessage}</div>
-            
-            <input type='reset' value='Start over'/>
 
             <input type='button' value='Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
@@ -273,11 +271,7 @@ export default class RSVPform extends React.Component{
 
         return(
 
-            <div >
-
-                <form onSubmit = {this.handleSubmit} onReset= {this.handleReset}
-                  onChange={this.handleChange} className='locations' 
-                  action='confirm.php' method='POST'>
+                <div onChange={this.handleChange} className='locations'  >
 
                 {page1}
 
@@ -287,8 +281,8 @@ export default class RSVPform extends React.Component{
 
                 {page4}
                 
-                </form>
-            </div>
+                </div>
         );  
 }
 } 
+//onSubmit = {this.handleSubmit} onReset= {this.handleReset}
