@@ -129,7 +129,7 @@ export default class RSVPform extends React.Component{
                     break;  
                 }
                 else{
-                    this.setState({errorMessage:' You must select check-out and check-in dates before advancing'});
+                    this.setState({errorMessage:' You must select BOTH check-out and check-in dates before advancing'});
                     break;
                 }
         }
@@ -225,7 +225,7 @@ export default class RSVPform extends React.Component{
         let page1 = <div className='formPage page1' style={pg1display}>
             <h3>Please Choose a Destination</h3>
             {cityButtonDisplay}
-            <div>{this.state.errorMessage}</div>
+            <div className='errorMsg'>{this.state.errorMessage}</div>
             <input type='button' value='Next' id='nextButton'
                 onClick={this.handleNext} className='formnav-buttons'/>
         </div>
@@ -233,7 +233,7 @@ export default class RSVPform extends React.Component{
         let page2 = <div className='formPage page2' style={pg2display}>
             <h3>Please select at least one activity</h3>
             {arrayForm}
-            <div>{this.state.errorMessage}</div>
+            <div className='errorMsg'>{this.state.errorMessage}</div>
             <input type='button' value='Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
@@ -250,7 +250,7 @@ export default class RSVPform extends React.Component{
         let page3 = <div className='formPage page3' style={pg3display}>
             <h3>Trip Information</h3>
             {tripForm}
-            <div>{this.state.errorMessage}</div>
+            <div className='errorMsg'>{this.state.errorMessage}</div>
             <input type='button' value='Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
@@ -261,12 +261,12 @@ export default class RSVPform extends React.Component{
         let page4 = <div className='formPage page4' style={pg4display}>
             <h3>Please Enter Your Contact Information</h3>
                 {contactForm}
-            <div>{this.state.errorMessage}</div>
+            <div className='errorMsg'>{this.state.errorMessage}</div>
 
             <input type='button' value='Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
-            <input type='submit' />
+            <input id='submitBtn' type='submit' />
         </div>
 
         return(
