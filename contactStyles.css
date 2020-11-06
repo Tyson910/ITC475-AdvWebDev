@@ -37,7 +37,7 @@ input{
     transition: all .2s;
     border: .05em solid
 }
-#nextButton{
+#nextButton, #submitBtn{
     color:#FFFFFF;
     background-color: #6495ed;
 }
@@ -48,14 +48,15 @@ input{
 
 #backButton{
     background-color: #FFFFFF;
-    /*
-    color: #4eb5f1;
-    */
     color:darkslategrey;
 }
 #backButton:hover{
     color:whitesmoke;
+    background-color: darkslategrey;
+    /*
+    color:whitesmoke;
     background-color: #4eb5f1;
+    */
 }
 
 #allButton,#noneButton{
@@ -71,13 +72,13 @@ input{
     color:red;
     font-size: large;
 }
-
+/*
 #submitBtn{
     background-color:lime;
     color:white;
     
 }
-
+*/
 
 @media only screen and (min-width: 700px) {
     #rsvpForm{

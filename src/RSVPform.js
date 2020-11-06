@@ -36,7 +36,7 @@ export default class RSVPform extends React.Component{
         this.initState = this.state;
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleReset = this.handleReset.bind(this);
+        //this.handleReset = this.handleReset.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
         this.handleAll= this.handleAll.bind(this);
@@ -63,10 +63,8 @@ export default class RSVPform extends React.Component{
             ));
 
             //verifies activities have been selected
-            let filteredArray = outingsArray.filter(x =>(
+            let filteredOutingsArray = outingsArray.filter(x =>(
                 x.isPicked === true));
-                
-            let numOfOutings = filteredArray.length;
             
             //sets IsPicked to true in chosen objects
             if(event.target.checked){
@@ -76,8 +74,7 @@ export default class RSVPform extends React.Component{
                     }
                     return x });
                 this.setState({outings: elementsIndex});
-                this.setState({advance:true});
-
+                this.setState({numOfOutings: filteredOutingsArray.length})
             }
 
             //sets IsPicked to false in unchosen objects
@@ -88,20 +85,16 @@ export default class RSVPform extends React.Component{
                     }
                     return x })
                 this.setState({outings: elementsIndex});
-
-                if(!numOfOutings){
-                this.setState({advance:false});
-            }
             }
         }
     }
-
+    //move foward one page
     handleNext(event){
-        let advance = this.state.advance;
+
 
         switch(this.state.page){
             case 1:
-                if(advance){
+                if(this.state.city){
                     this.setState({page: this.state.page+1});
                     this.setState({advance: false});
                     this.setState({errorMessage:''});
@@ -112,7 +105,7 @@ export default class RSVPform extends React.Component{
                     break;
                 }
             case 2:
-                if(advance){
+                if(this.state.numOfOutings){
                     this.setState({page: this.state.page+1});
                     this.setState({advance: false});
                     this.setState({errorMessage:''});
@@ -134,13 +127,13 @@ export default class RSVPform extends React.Component{
                 }
         }
     }
-
+    //move back one page
     handlePrev(event){
         this.setState({page: this.state.page-1});
         this.setState({advance:true});
     }
 
-    //allows user to select all or none activities
+    //allows user to no activities on page 2
     handleNone(event){
         let elementsIndex = this.state.outings.map(x =>{
             if(x.isPicked){
@@ -149,8 +142,9 @@ export default class RSVPform extends React.Component{
             return x })
         this.setState({outings: elementsIndex});
         this.setState({advance:false});
+        this.setState({numOfOutings:0});
     }
-
+    //allows user to all activities on page 2
     handleAll(event){
         let elementsIndex = this.state.outings.map(x =>{
             if(!x.isPicked){
@@ -159,6 +153,7 @@ export default class RSVPform extends React.Component{
             return x })
         this.setState({outings: elementsIndex});
         this.setState({advance:true});
+        this.setState({numOfOutings:this.state.outings.length})
     }
 
     handleReset(event) {
