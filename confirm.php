@@ -1,6 +1,37 @@
 <?php
-    $checkinDate = $_POST['checkin']; 
-    $checkoutDate = $_POST['checkout']; 
+
+// define variables and set to empty values
+$fname = $Lname = $email = $phoneNum =  "";
+$city = $checkinDate = $checkoutDate = "";
+$adultCount = $kidCount = $emailError = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $fname = test_input($_POST["fname"]);
+  $Lname = test_input($_POST["Lname"]);
+  $email = test_input($_POST["email"]);
+  $phoneNum = test_input($_POST["phoneNum"]);
+  $city = test_input($_POST["city"]);
+  $outingList = $_POST["outing"];
+  $adultCount = test_input($_POST["adultCount"]);
+  $kidCount = test_input($_POST["kidCount"]);
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    return $data;
+}
+//verfies email is in correct format
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailError = "Invalid email format, the provided email: " . $email . 
+    " is missing a domain name (.com/.edu/.net).".
+    " This request will not be processed, ". 
+    "click "."<a id='home-link' href='Contact.html'>here</a>". 
+    " to resubmit form"; 
+    }
+
+    $checkinDate = test_input( $_POST['checkin']); 
+    $checkoutDate = test_input($_POST['checkout']); 
     function newDateFormat($vacayDate){
         $vacayYear = substr($vacayDate, 0 ,4);
         $vacayMonth = substr($vacayDate, 5, 2);
@@ -54,48 +85,44 @@
 <head>
     <meta charset='UTF-8'>
     <title>Confirmation</title>
-    <link href="styles.css" rel="stylesheet"/>
+    <link href="phpstyles.css" rel="stylesheet"/>
 </head>
 
 <body>
     <header>
             <div class="logo" id='greetings'></div>   
     </header>
-    <div id="line-seperator"> </div>
+    <div id="line-seperator">. </div>
 
-    <h2 id='thankYou'>
+    <h2>
         Thank you for submitting your travel agent
         contact request! Here is the information you submitted:
     </h2>
-
+    
+    <section>
     <h4>Client Name: </h4>
     <div class='formOutput'>
-        <?php echo $_POST["fname"] . ' ' . $_POST["Lname"]; ?>
+        <?php echo $fname . ' ' . $Lname ?>
     </div>
     
     <h4>Client Phone Number:</h4>
     <div class='formOutput'>
-        <?php echo $_POST['phoneNum'];?> 
+        <?php echo $phoneNum?> 
     </div>
+    
 
     <h4>Client email address:</h4>
     <div class='formOutput'>
-        <?php echo $_POST["email"]; ?>
-    </div>
-    
-    <h4>There are </h4>
-    <div class='formOutput'>
-        <?php echo $_POST["adultCount"];?> adults traveling 
-    </div>
-
-    <h4>There are </h4>
-    <div class='formOutput'>
-        <?php echo $_POST["kidCount"];?> children traveling 
-    </div>
-    
-    <h4>You are  traveling to</h4>
-    <div class='formOutput'>
-        <?php echo $_POST["city"]; ?>
+        <?php 
+        if($emailError){
+            echo "<div class='formOutput errorMsg'>".
+            $emailError. "</div>" ;
+        }
+        else{
+            echo "<div class='formOutput'>".
+                $email . "</div>";
+        }
+         ?>
     </div>
 
     <h4>Your check in date is </h4>
@@ -108,16 +135,31 @@
         <?php echo newDateFormat($checkoutDate);?>
     </div>
 
+    <h4> Number of adults traveling </h4>
+    <div class='formOutput'>
+        <?php echo $adultCount ;?>
+    </div>
+    
+    <h4> Number of children traveling </h4>
+    <div class='formOutput'>
+    <?php echo $kidCount ;?>
+    
+    </div>
+    
+    <h4>You are  traveling to</h4>
+    <div class='formOutput'>
+        <?php echo $city; ?>
+    </div>
+
     <h4>You chose the following activity/activities: </h4>
     <div class='formOutput'>
     <?php 
-        $name = $_POST['outing'];
-
-        foreach ($name as $outing){
-        echo '<li>'  . $outing;
+        foreach ($outingList as $outing){
+        echo '<li>'  . test_input($outing);
         }
     ?>
     </div>
+    </section>
     
     <h2>An agent will be in touch with you soon!</h2>
 
