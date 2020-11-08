@@ -1,9 +1,10 @@
-//import React from 'react'
+
 import activityList from './activityList.js';
 import ContactInfo from './RSVPComponents/ContactInfo.js';
 import CityButtons from './RSVPComponents/CityButtons.js';
 import OutingsButtons from './RSVPComponents/OutingsButtons.js';
 import TripInfo from './RSVPComponents/TripInfo.js';
+import MasterCheck from './RSVPComponents/MasterCheck.js';
 
 
 export default class RSVPform extends React.Component{
@@ -14,21 +15,20 @@ export default class RSVPform extends React.Component{
         this.state = {
             //navigation
             page: 1,
-            advance: false,
             errorMessage: '',
             //locationdata
             city: '',
             outings: null,
-            //contact data
-            fname: '',
-            Lname:'',
-            email:'',
-            phoneNum:'',
             //trip info data
             kidCount:0,
             adultCount:1,
             checkin:'',
             checkout:'',
+            //contact data
+            fname: '',
+            Lname:'',
+            email:'',
+            phoneNum:'',
 
         };
 
@@ -56,6 +56,7 @@ export default class RSVPform extends React.Component{
         }
 
         else if(event.target.type ==='checkbox'){
+            console.log(event.target.checked)
             const outingsArray = this.state.outings; 
 
             let arrayForm = outingsArray.find(item =>( 
@@ -96,7 +97,6 @@ export default class RSVPform extends React.Component{
             case 1:
                 if(this.state.city){
                     this.setState({page: this.state.page+1});
-                    this.setState({advance: false});
                     this.setState({errorMessage:''});
                     break;  
                 }
@@ -107,7 +107,6 @@ export default class RSVPform extends React.Component{
             case 2:
                 if(this.state.numOfOutings){
                     this.setState({page: this.state.page+1});
-                    this.setState({advance: false});
                     this.setState({errorMessage:''});
                     break;  
                 }
@@ -141,7 +140,6 @@ export default class RSVPform extends React.Component{
             }
             return x })
         this.setState({outings: elementsIndex});
-        this.setState({advance:false});
         this.setState({numOfOutings:0});
     }
     //allows user to all activities on page 2
@@ -152,7 +150,6 @@ export default class RSVPform extends React.Component{
             }
             return x })
         this.setState({outings: elementsIndex});
-        this.setState({advance:true});
         this.setState({numOfOutings:this.state.outings.length})
     }
 
@@ -165,9 +162,7 @@ export default class RSVPform extends React.Component{
 
         const cityButtonDisplay = cityArray.map(givenCity => <CityButtons key={givenCity} city={givenCity}/>);
    
-        let arrayForm;
-        let contactForm;
-        let tripForm;
+        let arrayForm, contactForm, tripForm;
 
         if(this.state.city){
             const outingsArray = this.state.outings; 
@@ -221,15 +216,19 @@ export default class RSVPform extends React.Component{
             <h3>Please Choose a Destination</h3>
             {cityButtonDisplay}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Next' id='nextButton'
-                onClick={this.handleNext} className='formnav-buttons'/>
+           
+            <input type='button' value='Next ⟩' id='nextButton'
+                onClick={this.handleNext} className='formnav-buttons'>
+                </input>
+  
         </div>
         
         let page2 = <div className='formPage page2' style={pg2display}>
             <h3>Please select at least one activity</h3>
+            <MasterCheck isPicked='false' selected={this.handleAll} />
             {arrayForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Go Back' id='backButton'
+            <input type='button' value=' ⟨ Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
             <input type='button' value='Select None' id='noneButton'
@@ -238,7 +237,7 @@ export default class RSVPform extends React.Component{
             <input type='button' value='Select All' id='allButton'
             onClick={this.handleAll} className='formnav-buttons'/>
 
-            <input type='button' value='Next' id='nextButton'
+            <input type='button' value='Next ⟩' id='nextButton'
             onClick={this.handleNext} className='formnav-buttons'/>
         </div>
 
@@ -246,10 +245,10 @@ export default class RSVPform extends React.Component{
             <h3>Trip Information</h3>
             {tripForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Go Back' id='backButton'
+            <input type='button' value='Go Back ⟨' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
-            <input type='button' value='Next' id='nextButton'
+            <input type='button' value='Next ⟩' id='nextButton'
             onClick={this.handleNext} className='formnav-buttons'/>
         </div>
 
@@ -258,7 +257,7 @@ export default class RSVPform extends React.Component{
                 {contactForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
 
-            <input type='button' value='Go Back' id='backButton'
+            <input type='button' value=' ⟨ Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
             <input id='submitBtn' type='submit' />
@@ -280,4 +279,3 @@ export default class RSVPform extends React.Component{
         );  
 }
 } 
-//onSubmit = {this.handleSubmit} onReset= {this.handleReset}

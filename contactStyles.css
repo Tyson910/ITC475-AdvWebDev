@@ -53,10 +53,6 @@ input{
 #backButton:hover{
     color:whitesmoke;
     background-color: darkslategrey;
-    /*
-    color:whitesmoke;
-    background-color: #4eb5f1;
-    */
 }
 
 #allButton,#noneButton{
@@ -72,13 +68,10 @@ input{
     color:red;
     font-size: large;
 }
-/*
-#submitBtn{
-    background-color:lime;
-    color:white;
-    
+.form-check{
+    margin-left: 43%;
+    text-align: left;
 }
-*/
 
 @media only screen and (min-width: 700px) {
     #rsvpForm{
