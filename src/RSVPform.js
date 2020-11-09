@@ -56,7 +56,7 @@ export default class RSVPform extends React.Component{
         }
 
         else if(event.target.type ==='checkbox'){
-            console.log(event.target.checked)
+
             const outingsArray = this.state.outings; 
 
             let arrayForm = outingsArray.find(item =>( 
