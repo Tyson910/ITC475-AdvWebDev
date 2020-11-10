@@ -80,6 +80,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 ?>
 
 <?php
+/*
         $servername = "localhost";
         $username = "root";
         $password = "root";
@@ -89,7 +90,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         
 
-        /*
+        
         // Check connection
         if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
