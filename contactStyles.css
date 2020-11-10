@@ -40,8 +40,9 @@ input{
 #nextButton, #submitBtn{
     color:#FFFFFF;
     background-color: #6495ed;
+    margin-top:2%;
 }
-#nextButton:hover{
+#nextButton:hover, #submitBtn:hover{
     background-color: #6495ed;
     color:black;
 }
@@ -55,6 +56,7 @@ input{
     background-color: darkslategrey;
 }
 
+/*
 #allButton,#noneButton{
     color:#6c4ef1;
 }
@@ -63,20 +65,28 @@ input{
     background-color:#6c4ef1;
     color:whitesmoke;
 }
+*/
 
 .errorMsg{
     color:red;
     font-size: large;
 }
 .form-check{
-    margin-left: 43%;
+    margin-top:1%;
+    margin-left: 41%;
     text-align: left;
 }
+#master-check{
+    margin-left:37%;
+}
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 750px) {
     #rsvpForm{
         margin-left: 2%;
         width: 45%;
         text-align: center;
+    }
+    #master-check{
+        margin-left:37%;
     }
 }
