@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $outingList = $_POST["outing"];
   $adultCount = test_input($_POST["adultCount"]);
   $kidCount = test_input($_POST["kidCount"]);
+
 }
 
 function test_input($data) {
@@ -77,26 +78,13 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         }
         return "$vacayMonth-$vacayDay-$vacayYear" ;
     }
-?>
+//converts outings to Str for easy SQL entry
+function arrayToStr($v1, $v2){
+        return $v1 . $v2. ', ';
+    }
+    $outingString = array_reduce($outingList, 'arrayToStr');
+    ?>
 
-<?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "root";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password);
-
-        
-
-        /*
-        // Check connection
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        echo "Connected successfully";
-        */
-        ?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -180,7 +168,75 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     </div>
     </section>
     
-    <h2>An agent will be in touch with you soon!</h2>
+    <h2>
+    <?php
+    if(!$emailError){
+        echo " An agent will be in touch with you soon! ";
+    }?>
+    </h2>
+
+    <?php
+    if(!$emailError){
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+        $dbname = 'myDB';
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password);
+
+        // Check connection
+        if ($conn->connect_error) {
+        echo "Connection failed: " . $conn->connect_error;
+        }
+
+        // Create database 
+        $sql = "CREATE DATABASE myDB";
+        if ($conn->query($sql) === FALSE) {
+        echo "Error creating database: " . $conn->error;
+        }
+        mysqli_close($conn);
+
+        // sql to create table
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $sql = "CREATE TABLE Customer (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        firstname VARCHAR(30) NOT NULL,
+        lastname VARCHAR(30) NOT NULL,
+        phoneNum VARCHAR(12) NOT NULL,
+        email VARCHAR(50),
+        checkinDate VARCHAR(20) NOT NULL,
+        checkoutDate VARCHAR(20) NOT NULL,
+        kidCount TINYINT(1) ,
+        adultCount TINYINT(1),
+        city VARCHAR(20),
+        activities VARCHAR(500)
+        )";
+        
+        if ($conn->query($sql) === FALSE) {
+        echo "Uh Error creating table: " . $conn->error;
+        }
+        mysqli_close($conn);
+
+        //insert data into table
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        $sql = "INSERT INTO Customer (firstname, lastname, phoneNum, email,
+        checkinDate, checkoutDate, kidCount, adultCount, city, activities)
+
+        VALUES ('{$fname}', '{$Lname}', '{$phoneNum}', '{$email}','{$checkinDate}', 
+        '{$checkoutDate}', '{$kidCount}', '{$adultCount}',
+         '{$city}', '{$outingString}')";
+
+        if (mysqli_query($conn, $sql) ===FALSE ) {
+        echo "<br> Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        mysqli_close($conn);
+
+    }
+        ?> 
 
     <footer>
             <div>Copyright Protected. All rights reserved</div>
