@@ -78,6 +78,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         }
         return "$vacayMonth-$vacayDay-$vacayYear" ;
     }
+<<<<<<< HEAD
 //converts outings to Str for easy SQL entry
 function arrayToStr($v1, $v2){
         return $v1 . $v2. ', ';
@@ -85,6 +86,29 @@ function arrayToStr($v1, $v2){
     $outingString = array_reduce($outingList, 'arrayToStr');
     ?>
 
+=======
+?>
+
+<?php
+/*
+        $servername = "localhost";
+        $username = "root";
+        $password = "root";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password);
+
+        
+
+        
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+        echo "Connected successfully";
+        */
+        ?> 
+>>>>>>> 18d4b152503965aa10220651a784b49758a3a1b0
 
 <!DOCTYPE html>
 <html lang="en">

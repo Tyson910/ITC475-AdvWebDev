@@ -1,5 +1,3 @@
-//import React from 'react';
-
 
 export default function TripInfo({adultInput, kidsInput,onTripChange, checkout, checkin}){
 

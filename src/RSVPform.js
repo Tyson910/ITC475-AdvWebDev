@@ -1,9 +1,11 @@
-//import React from 'react'
+
 import activityList from './activityList.js';
 import ContactInfo from './RSVPComponents/ContactInfo.js';
 import CityButtons from './RSVPComponents/CityButtons.js';
 import OutingsButtons from './RSVPComponents/OutingsButtons.js';
 import TripInfo from './RSVPComponents/TripInfo.js';
+import MasterCheck from './RSVPComponents/MasterCheck.js';
+import handleCheckbox from './handleCheckbox.js';
 
 
 export default class RSVPform extends React.Component{
@@ -14,21 +16,20 @@ export default class RSVPform extends React.Component{
         this.state = {
             //navigation
             page: 1,
-            advance: false,
             errorMessage: '',
             //locationdata
             city: '',
             outings: null,
-            //contact data
-            fname: '',
-            Lname:'',
-            email:'',
-            phoneNum:'',
             //trip info data
             kidCount:0,
             adultCount:1,
             checkin:'',
             checkout:'',
+            //contact data
+            fname: '',
+            Lname:'',
+            email:'',
+            phoneNum:'',
 
         };
 
@@ -39,53 +40,80 @@ export default class RSVPform extends React.Component{
         //this.handleReset = this.handleReset.bind(this);
         this.handleNext = this.handleNext.bind(this);
         this.handlePrev = this.handlePrev.bind(this);
-        this.handleAll= this.handleAll.bind(this);
-        this.handleNone= this.handleNone.bind(this);
     }
 
 
     handleChange(event){
+        let value = event.target.value;
+        let name = event.target.name;
 
-        this.setState({[event.target.name]:event.target.value});
+        this.setState({[name]:value});
 
         if( event.target.type ==='radio'){
-        const outingsOptions = activityList(event.target.value);
+        const outingsOptions = activityList(value);
         const outingsArray = Object.values(outingsOptions) ;
         this.setState({outings: outingsArray});
         this.setState({advance:true});
         }
-
+    
         else if(event.target.type ==='checkbox'){
-            const outingsArray = this.state.outings; 
-
+            
+            const outingsArray = this.state.outings;
+            
             let arrayForm = outingsArray.find(item =>( 
-                item.activity === event.target.value  
+                item.activity === value  
             ));
 
             //verifies activities have been selected
             let filteredOutingsArray = outingsArray.filter(x =>(
                 x.isPicked === true));
-            
-            //sets IsPicked to true in chosen objects
-            if(event.target.checked){
-                let elementsIndex = this.state.outings.map(x =>{
-                    if(x.id === arrayForm.id){
-                        x.isPicked = true;
-                    }
-                    return x });
-                this.setState({outings: elementsIndex});
-                this.setState({numOfOutings: filteredOutingsArray.length})
-            }
 
-            //sets IsPicked to false in unchosen objects
-            else{
-                let elementsIndex = this.state.outings.map(x =>{
-                    if(x.id === arrayForm.id){
-                        x.isPicked = false;
+                if( name.includes('outing') ){
+                    //sets IsPicked to true in chosen objects
+                    if(event.target.checked){
+                        let elementsIndex = this.state.outings.map(x =>{
+                            if(x.id === arrayForm.id){
+                                x.isPicked = true;
+                            }
+                            return x });
+                        this.setState({outings: elementsIndex});
+                        this.setState({numOfOutings: filteredOutingsArray.length})
                     }
-                    return x })
-                this.setState({outings: elementsIndex});
-            }
+        
+                    //sets IsPicked to false in unchosen objects
+                    else{
+                        let elementsIndex = this.state.outings.map(x =>{
+                            if(x.id === arrayForm.id){
+                                x.isPicked = false;
+                            }
+                            return x })
+                        this.setState({outings: elementsIndex});
+                        this.setState({numOfOutings: filteredOutingsArray.length});
+                    }
+                }
+
+                else if(name==='masterCheck'){
+                    //checks all options
+                    if(event.target.checked){
+                        let elementsIndex = this.state.outings.map(x =>{
+                            if(!x.isPicked){
+                                x.isPicked = true;
+                            }
+                            return x })
+                            this.setState({outings: elementsIndex});
+                            this.setState({numOfOutings: filteredOutingsArray.length})
+                    }
+                    else if(!event.target.checked){
+                        //checks no options
+                        let elementsIndex = this.state.outings.map(x =>{
+                            if(x.isPicked){
+                                x.isPicked = false;
+                            }
+                            return x })
+                            this.setState({outings: elementsIndex});
+                            this.setState({numOfOutings: filteredOutingsArray.length})
+                    }
+                }
         }
     }
     //move foward one page
@@ -96,7 +124,6 @@ export default class RSVPform extends React.Component{
             case 1:
                 if(this.state.city){
                     this.setState({page: this.state.page+1});
-                    this.setState({advance: false});
                     this.setState({errorMessage:''});
                     break;  
                 }
@@ -107,7 +134,6 @@ export default class RSVPform extends React.Component{
             case 2:
                 if(this.state.numOfOutings){
                     this.setState({page: this.state.page+1});
-                    this.setState({advance: false});
                     this.setState({errorMessage:''});
                     break;  
                 }
@@ -131,29 +157,7 @@ export default class RSVPform extends React.Component{
     handlePrev(event){
         this.setState({page: this.state.page-1});
         this.setState({advance:true});
-    }
-
-    //allows user to no activities on page 2
-    handleNone(event){
-        let elementsIndex = this.state.outings.map(x =>{
-            if(x.isPicked){
-                x.isPicked = false;
-            }
-            return x })
-        this.setState({outings: elementsIndex});
-        this.setState({advance:false});
-        this.setState({numOfOutings:0});
-    }
-    //allows user to all activities on page 2
-    handleAll(event){
-        let elementsIndex = this.state.outings.map(x =>{
-            if(!x.isPicked){
-                x.isPicked = true;
-            }
-            return x })
-        this.setState({outings: elementsIndex});
-        this.setState({advance:true});
-        this.setState({numOfOutings:this.state.outings.length})
+        this.setState({errorMessage:''});
     }
 
     handleReset(event) {
@@ -165,9 +169,7 @@ export default class RSVPform extends React.Component{
 
         const cityButtonDisplay = cityArray.map(givenCity => <CityButtons key={givenCity} city={givenCity}/>);
    
-        let arrayForm;
-        let contactForm;
-        let tripForm;
+        let arrayForm, contactForm, tripForm;
 
         if(this.state.city){
             const outingsArray = this.state.outings; 
@@ -221,24 +223,23 @@ export default class RSVPform extends React.Component{
             <h3>Please Choose a Destination</h3>
             {cityButtonDisplay}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Next' id='nextButton'
-                onClick={this.handleNext} className='formnav-buttons'/>
+           
+            <input type='button' value='Next ⟩' id='nextButton'
+                onClick={this.handleNext} className='formnav-buttons'>
+                </input>
+  
         </div>
         
         let page2 = <div className='formPage page2' style={pg2display}>
-            <h3>Please select at least one activity</h3>
+            <h3>Please select at least one activity in {this.state.city}</h3>
+            <MasterCheck  selected={this.handleChange} />
             {arrayForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Go Back' id='backButton'
+
+            <input type='button' value=' ⟨ Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
-            <input type='button' value='Select None' id='noneButton'
-            onClick={this.handleNone} className='formnav-buttons'/>
-
-            <input type='button' value='Select All' id='allButton'
-            onClick={this.handleAll} className='formnav-buttons'/>
-
-            <input type='button' value='Next' id='nextButton'
+            <input type='button' value='Next ⟩' id='nextButton'
             onClick={this.handleNext} className='formnav-buttons'/>
         </div>
 
@@ -246,10 +247,10 @@ export default class RSVPform extends React.Component{
             <h3>Trip Information</h3>
             {tripForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
-            <input type='button' value='Go Back' id='backButton'
+            <input type='button' value='Go Back ⟨' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
-            <input type='button' value='Next' id='nextButton'
+            <input type='button' value='Next ⟩' id='nextButton'
             onClick={this.handleNext} className='formnav-buttons'/>
         </div>
 
@@ -258,7 +259,7 @@ export default class RSVPform extends React.Component{
                 {contactForm}
             <div className='errorMsg'>{this.state.errorMessage}</div>
 
-            <input type='button' value='Go Back' id='backButton'
+            <input type='button' value=' ⟨ Go Back' id='backButton'
             onClick={this.handlePrev} className='formnav-buttons'/>
 
             <input id='submitBtn' type='submit' />
@@ -280,4 +281,3 @@ export default class RSVPform extends React.Component{
         );  
 }
 } 
-//onSubmit = {this.handleSubmit} onReset= {this.handleReset}

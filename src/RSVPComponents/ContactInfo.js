@@ -1,4 +1,3 @@
-//import React from 'react'
 
 function ContactInfo({fname,Lname,email,phone, onTextChange}){
     
